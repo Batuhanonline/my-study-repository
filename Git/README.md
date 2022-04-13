@@ -42,6 +42,21 @@ Proje klasörü içersindeyken klasörün boş bir git deposu oluşturmak için 
 $ git init
 ```
 
+* ## git add
+
+Yeni eklenen veya üzerinde değişiklik yapılan dosyaları **staged** ortamına göndermek için kullanılır.
+
+```
+$ git add <dosya_isim veya klasor_isim>
+```
+
+Tek seferde staged ortamına ekleme yapmak için:
+
+```
+$ git add .   ya da 
+$ git add *
+```
+
 * ## git commit 
 
 GIT’in bir çok konfigürasyon ve ayarı vardır, bunlardan ikisi user.name ve user.email olanıdır. Bu ayarları yapılandırmak için aşağıdaki komutları kullanırız. GIT'i ilk kurduğumuzda genellikle aldığımız ilk hata bu konfigrasyon ayarlarını yapmadığımız için gelir. 
@@ -57,20 +72,6 @@ Bu ayarların bütününü görüntelemek için ise:
 $ git config --list
 ```
 
-* ## git add
-
-Yeni eklenen veya üzerinde değişiklik yapılan dosyaları **staged** ortamına göndermek için kullanılır.
-
-```
-$ git add <dosya_isim veya klasor_isim>
-```
-
-Tek seferde staged ortamına ekleme yapmak için:
-
-```
-$ git add .   ya da 
-$ git add *
-```
 
 * ## git rm
 
