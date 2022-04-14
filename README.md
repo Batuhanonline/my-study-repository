@@ -2,7 +2,7 @@
 
 * [GIT-SCM](Git/README.md)
 
-* [Veri Yapıları ve Algoritma](Veriyapilarivealgoritma\README.md)
+* [Veri Yapıları ve Algoritma](Veriyapilarivealgoritma/README.md)
 
 
 # Youtube ile tamamladığım eğitimler
