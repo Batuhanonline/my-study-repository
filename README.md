@@ -4,6 +4,7 @@
 
 * [Veri Yapıları ve Algoritma](Veriyapilarivealgoritma/README.md)
 
+* [JavaScript](JavaScript)
 
 # Youtube ile tamamladığım eğitimler
 
