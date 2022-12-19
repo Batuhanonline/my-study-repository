@@ -4,6 +4,6 @@ let user = {
     isActive: true
 }
 
-localStorage.setItem('userInfo', JSON.stringify(user) )
+localStorage.setItem('userInfo', JSON.stringify(user) ) // stringify -> Bilgilerin objeden string değerlere dönüştürme
 
 let userInfo = JSON.parse(localStorage.getItem('userInfo'))
