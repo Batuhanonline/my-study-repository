@@ -27,6 +27,4 @@ public class Main {
         total = armut*armutkilo+elma*elmakilo+domates*domateskilo+muz*muzkilo+patlıcan*patlıcankilo;
 
         System.out.println("Toplam tutar: " + total);
-        System.out.println(Integer.MAX_VALUE);
-    }
 }
