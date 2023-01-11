@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        int basamak, yildiz, k = 1;
+        int basamak, k = 1;
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Basamak sayısını giriniz: ");
