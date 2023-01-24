@@ -248,3 +248,137 @@ Reponuzu oluştururken verilen seçeneklerde add gitignore file dosyasına tıkl
 |name[a-z].file|/names.file - /nameb.file|
 |*.file|/name.file - /lib/name.file|
 |name/ !name/secret.log|/name/file.txt - /name/log/name.log - no match: /name/secret.log|
+
+
+<br>
+<br>
+<br>
+
+# İleri Seviye Git Kullanımı
+
+- Bir önceki commitimize yeni değişiklikler eklememiz gerektiği durumlarda 
+``` 
+git commit --amend
+```
+komutunu kullanabilmekteyiz. Bu komut çalıştığında yeni eklemiş oldumuz değişiklikler bir önceki attığımız commitimize eklenmiş olup commit mesajını değiştirebilmekteyiz.
+
+- Commit ederken yanlış yaptığımız durumlarda commiti silebilmekteyiz. Adım adım gider isek ilk olarak commitimizin logID sini almamız gerekmektedir. Logumuzu nasıl aldığımızı zaten öğrenmiştik ya peki son attığımız commitlerin kaç tanesini getirmesini nasıl belirtebiliriz.
+```
+git log -n 1
+```
+Buradan aldığımız logID ile beraber;
+```
+git revert logID
+```
+şeklinde girdiğimizde git seçili commit değişiklerini geri alan bir commit yaratmaktadır. Karşımıza çıkmakta olan mesaj ekranına ise seçili commitin neden silindiğini yazabiliriz. Yazmak istemesek bile git bizim yerimize commitin silindiğine dailr bir commit mesajı oluşturmaktadır.
+
+<br>
+
+- Bazı durumlarda sildiğimiz commitler için yeni commit atmak istemeyiz. Bu gibi durumlarda kullanabileceğimiz bit git komutu bulunmaktadır fakat bu komutu kullanırken dikkat edilmesi gerekmektedir. Nu komut seçili commite kadar olan tüm commitleri ortadan kaldırmaktadır. 
+```
+git reset --hard logID
+``` 
+
+- İki commit arasındaki değişiklikleri gösteren komut;
+```
+git diff eskiLogID..yeniLogID
+```
+komut çalıştığında iki commit arasındaki farklılıklar gösterilecektir. Aynı şekilde bu komutu tek bir dosya içinde kullanabiliriz. 
+```
+git diff eskiLogID..yeniLogID dosyaAdi
+```
+komutu çalıştığında dosyada oluşmuş iki commit arasındaki farklılıklar çıktı vermektedir.
+
+## Branchler ile çalışmak
+
+Proje üzerinde yaptığımız tüm değişikleri "master" branchi ile commitlemek daha karmaşık bir yapıya bizi götürecektir. Bunun için master brechinin yanına ek olarak ilgili konu üzerinde oluşturulmuş bir branch üzerinde çalışıp en son master branchinde birleştirmeliyiz.
+
+Mevcutta oluşturulmuş olan branchleri listeleme:
+```
+git branch
+```
+
+Yeni bir branch oluştırma:
+```
+git branch isim
+```
+
+Oluşturulmuş olup branche geçiş yapma:
+```
+git checkout isim
+```
+
+Yeni bir branch oluşturup direk o branche geçiş yapmanında kısayolunu yapmadan olmazdı:
+```
+git checkout -b isim
+```
+Silmek istediğimiz branchleri ise şu şekilde silebilmekteyiz:
+```
+git branch -D isim
+```
+
+- Farklı branchler arasında çalışıldığında branch farklılıkları birbirleri ile eşitlenene kadar birbirlerinden etkilenmezler.
+
+## Stash kullanımı
+Bir önceki committen bu yana yaptığınız tüm değişikleri commit etmeden saklamaya yarayan komuttur. Örnek vermek gerekir ise biz commitimizi attktan sonra yeni bir taska geçiş yaptık ve bu taskın belli bir yerine kadar geldik. Bir önceki taskta yaptığımız bir hata olduğunu öğrendik ve hemen düzeltmemiz gerekmektedir. Yarısına kadar yazmış olduğumuz taskı 
+```
+git stash
+``` 
+kullanarak geri döndürülebilir şekilde silebiliriz ve vir önceki commitimizi düzenleyebiliriz.
+
+Bu stashe attğımız değişiklikleri ise
+
+```
+git stash list
+```
+
+komutu ile listeleyebilriz. Yani buradan anlıyoruzki stashin içerisine istediğimiz kadar atabiliriz.
+Listenin içerisini temizlemek istediğimizde ise:
+```
+git stash clear
+```
+komutu kullanabiliriz.
+
+Peki bu stashe attğımız değişiklikleri nasıl geri alabiliriz? Bunun iki yolu bulunmaktadır.
+
+- Stashe en son kaydettiğimiz değişiklikleri geri getirir ve listeden siler;
+```
+git stash pop
+```
+
+- Spesifik bir stashi geri getirmek istediğimizde ise;
+```
+git stash apply stash@{stashNo}
+```
+kullanabiliriz. Fakat dikkat etmemiz gereken başka bir şeyde var. Apply ile geri getirdiğimiz stash, stash listesinden silinmez.
+
+## Merge kullanımı
+ - Farklı branchler arasında geliştirme yaptığımızda genellikle en son branchler master brancginde birleştirilmektedir. Bu birleştirmenin birden fazla yolu olmasıyla beraber merge kullanımı şu şekilde olmaktadır;
+  ```
+  git merge branchIsim
+  ```
+merge etmiş olduğumuz branch de bulunan tüm commitleri o an olduğumuz branche aktarmaktadır. 
+
+Çoğu zaman bu commitleri toplu şekilde birleştirme yapmaktayız. Bunun yolu ise;
+  ```
+  git merge -squash branchIsim
+  ```
+
+Bu komut ile merge etmiş olduğumuz branch içerisindeki tüm değişiklikleri birleştirip bizim commit etmemiz için bekletti. Yani tüm commitler ayrı ayrı gelmek yerine tek bir commit ile birleştirmiş olduk.
+
+## Rebase kullanımı
+
+- Rebase kullanmak, merge ile birleştirmeden farklı olarak sanki master branchinde çalışılmış gibi bir birleştirme yapmaktadır. Kullanımı ise şötledir;
+
+```
+git rebase branchIsim
+```
+
+## Conflict Oluşması
+
+- Bazen iki farklı branch arasında aynı aynı yerde farklı değişiklikler oluşabilmektedir. Bu durumlarda git çoğu zaman kendi algoritmalarını kullanarak bir karara bağlamaktadır. Fakat bir karara bağlamadığı zamanlarda merge işlemi sonrasında hangi kodun duracağına karar verip commit işlemi gerçekleştirmelidir.
+
+- Bazen conflict oluştuğu durumlarda karar veremeyebiliriz ya da karar verecek zamanımız olmayabilir. Bu gibi durumlarda ise kodu merge etmeden önceki hale getirmek isteyebiliriz. Şu şekide kullanılmaktadır;
+```
+git merge --abort
+```
