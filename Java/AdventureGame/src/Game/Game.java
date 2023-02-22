@@ -7,6 +7,7 @@ import Characters.Samurai;
 import Locations.Battle.Cave;
 import Locations.Battle.Forest;
 import Locations.Battle.River;
+import Locations.Safe.SafeHouse;
 import Locations.Safe.Store;
 import Monsters.Vampire;
 
@@ -58,9 +59,20 @@ public class Game {
                 "\nZırh: " + player.getArmor().getName() + " ve hasar engellemesi: " + player.getArmor().getDamagePrevention());
     }
 
+    boolean isWin(){
+        if (player.getCharacter().isCaveWin() && player.getCharacter().isForestWin() && player.getCharacter().isRiverWin()){
+            return true;
+        }
+        return false;
+    }
+
     void selectLocationLoop() {
         int selectLocation;
         while (this.isAlive){
+            if (isWin()){
+                System.out.println("Tebrikler oyunu kazandınız.");
+                break;
+            }
             playerValues();
 
             System.out.println("Gitmek istediğiniz konumu seçiniz.");
@@ -72,6 +84,7 @@ public class Game {
             selectLocation = scanner.nextInt();
 
             switch (selectLocation){
+                case 1 -> new SafeHouse(player);
                 case 2 -> new Store(player);
                 case 3 -> new Cave(player);
                 case 4 -> new Forest(player);

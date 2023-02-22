@@ -32,4 +32,6 @@ public class Player {
     public void setArmor(Armor armor) {
         this.armor = armor;
     }
+
+
 }

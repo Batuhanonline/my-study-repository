@@ -8,8 +8,12 @@ abstract public class CharacterPlayer {
     String name;
     int damage;
     int healty;
+    int maxHealty;
     int money;
 
+    private boolean isForestWin = false;
+    private boolean isCaveWin = false;
+    private boolean isRiverWin = false;
     Weapon weapon;
     Armor armor;
 
@@ -18,6 +22,7 @@ abstract public class CharacterPlayer {
         this.name = name;
         this.damage = damage;
         this.healty = healty;
+        this.maxHealty = healty;
         this.money = money;
     }
 
@@ -75,5 +80,33 @@ abstract public class CharacterPlayer {
 
     public void setArmor(Armor armor) {
         this.armor = armor;
+    }
+
+    public int getMaxHealty() {
+        return maxHealty;
+    }
+
+    public boolean isForestWin() {
+        return isForestWin;
+    }
+
+    public void setForestWin(boolean forestWin) {
+        isForestWin = forestWin;
+    }
+
+    public boolean isCaveWin() {
+        return isCaveWin;
+    }
+
+    public void setCaveWin(boolean caveWin) {
+        isCaveWin = caveWin;
+    }
+
+    public boolean isRiverWin() {
+        return isRiverWin;
+    }
+
+    public void setRiverWin(boolean riverWin) {
+        isRiverWin = riverWin;
     }
 }

@@ -75,9 +75,9 @@ public class Store extends SafeLocation{
     void armorMenu() {
         int select;
         System.out.println("Paranız: " + this.player.getCharacter().getMoney() +
-                "1- Hafif: HasarEngelleme->1 Fiyat->15" +
-                "2- Orta: HasarEngelleme->3 Fiyat->25" +
-                "3- Ağır: HasarEngelleme->5 Fiyat->40");
+                "\n1- Hafif: HasarEngelleme->1 Fiyat->15" +
+                "\n2- Orta: HasarEngelleme->3 Fiyat->25" +
+                "\n3- Ağır: HasarEngelleme->5 Fiyat->40");
         select = scanner.nextInt();
         switch (select) {
             case 1 -> {

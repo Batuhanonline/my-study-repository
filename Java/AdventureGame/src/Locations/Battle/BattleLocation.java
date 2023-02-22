@@ -14,10 +14,12 @@ abstract public class BattleLocation extends Location {
     int monsterPiece;
     Monster monster;
     Player player;
+    String name;
     Random random = new Random();
 
     public BattleLocation(Player player, int ID, String name, boolean isSafeLocation, int monsterID, int monsterPiece) {
         super(player, ID, name, isSafeLocation);
+        this.name = name;
         this.player = player;
         this.monsterID = monsterID;
         this.monsterPiece = monsterPiece;
@@ -62,6 +64,10 @@ abstract public class BattleLocation extends Location {
                 }
                 this.player.getCharacter().setHealty(this.player.getCharacter().getHealty() - (monsterDamage));
             } else {
+                if (name.equals("Forest")) this.player.getCharacter().setForestWin(true);
+                if (name.equals("Cave")) this.player.getCharacter().setCaveWin(true);
+                if (name.equals("River")) this.player.getCharacter().setRiverWin(true);
+
                 this.player.getCharacter().setMoney(this.player.getCharacter().getMoney() + this.monster.getMoney());
                 return this.player;
             }
