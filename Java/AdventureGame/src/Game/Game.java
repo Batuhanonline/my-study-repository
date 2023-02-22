@@ -7,6 +7,7 @@ import Characters.Samurai;
 import Locations.Battle.Forest;
 import Monsters.Vampire;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
@@ -14,6 +15,7 @@ public class Game {
     boolean isAlive = true;
 
     Scanner scanner = new Scanner(System.in);
+    Random random = new Random();
 
     public Game(){
         player = new Player(selectCharacter());
@@ -43,10 +45,17 @@ public class Game {
         return character;
     }
 
+    int monsterPiece(int origin, int bound, String monster){
+        int monsterPiece = random.nextInt(origin, bound);
+        System.out.println(monsterPiece + " kadar " + monster + " ile karşılaşıldı!!!");
+        return monsterPiece;
+    }
     void selectForest(){
         Vampire vampire = new Vampire();
-        System.out.println(vampire);
-        Forest battle = new Forest(player, vampire);
+        int monsterPiece = monsterPiece(1,3, vampire.getName());
+        for (int i = 0; i < monsterPiece; i++){
+            new Forest(player, vampire);
+        }
     }
 
     void playerValues(){
