@@ -4,7 +4,9 @@ import Characters.Archer;
 import Characters.CharacterPlayer;
 import Characters.Knight;
 import Characters.Samurai;
+import Locations.Battle.Cave;
 import Locations.Battle.Forest;
+import Locations.Battle.River;
 import Monsters.Vampire;
 
 import java.util.Random;
@@ -45,18 +47,7 @@ public class Game {
         return character;
     }
 
-    int monsterPiece(int origin, int bound, String monster){
-        int monsterPiece = random.nextInt(origin, bound);
-        System.out.println(monsterPiece + " kadar " + monster + " ile karşılaşıldı!!!");
-        return monsterPiece;
-    }
-    void selectForest(){
-        Vampire vampire = new Vampire();
-        int monsterPiece = monsterPiece(1,3, vampire.getName());
-        for (int i = 0; i < monsterPiece; i++){
-            new Forest(player, vampire);
-        }
-    }
+
 
     void playerValues(){
         System.out.println("Can değeri: " + player.character.getHealty());
@@ -76,7 +67,9 @@ public class Game {
             selectLocation = scanner.nextInt();
 
             switch (selectLocation){
-                case 4 -> selectForest();
+                case 3 -> new Cave(player);
+                case 4 -> new Forest(player);
+                case 5 -> new River(player);
                 default -> {
                     System.out.println("Seçim yanlış olduğundan dolayı eve gittin!!!");
                 }

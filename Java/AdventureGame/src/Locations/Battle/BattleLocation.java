@@ -26,6 +26,7 @@ abstract public class BattleLocation extends Location {
 
     void combatStart(){
         int monsterPiece = random.nextInt(1, this.monsterPiece);
+        System.out.println(monsterPiece + " kadar canavar ile karşılaşıldı!!!");
         switch (this.monsterID){
             case 1 -> {
                 for (int i = 0; i < monsterPiece; i++){
