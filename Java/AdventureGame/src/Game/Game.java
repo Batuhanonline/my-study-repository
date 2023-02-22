@@ -7,6 +7,7 @@ import Characters.Samurai;
 import Locations.Battle.Cave;
 import Locations.Battle.Forest;
 import Locations.Battle.River;
+import Locations.Safe.Store;
 import Monsters.Vampire;
 
 import java.util.Random;
@@ -50,7 +51,11 @@ public class Game {
 
 
     void playerValues(){
-        System.out.println("Can değeri: " + player.character.getHealty());
+        System.out.println("******************************************\n" +
+                "Can değeri: " + player.getCharacter().getHealty() +
+                "\nPara: " + player.getCharacter().getMoney() +
+                "\nSilah: " + player.getWeapon().getName() + " ve hasarı: " + player.getWeapon().getDamage() +
+                "\nZırh: " + player.getArmor().getName() + " ve hasar engellemesi: " + player.getArmor().getDamagePrevention());
     }
 
     void selectLocationLoop() {
@@ -67,6 +72,7 @@ public class Game {
             selectLocation = scanner.nextInt();
 
             switch (selectLocation){
+                case 2 -> new Store(player);
                 case 3 -> new Cave(player);
                 case 4 -> new Forest(player);
                 case 5 -> new River(player);

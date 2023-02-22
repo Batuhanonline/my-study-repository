@@ -27,7 +27,7 @@ public class Weapon {
 
     public String getName() {
         if (isWeapon) return name;
-        return "";
+        return "Yok";
     }
 
     public void setName(String name) {

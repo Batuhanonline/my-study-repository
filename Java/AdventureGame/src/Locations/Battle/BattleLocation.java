@@ -46,7 +46,7 @@ abstract public class BattleLocation extends Location {
                     combat();
                 }
             }
-            default -> System.out.println("BattleLocation sswitchcase hatası.");
+            default -> System.out.println("BattleLocation switch case hatası.");
         }
     }
     public Player combat(){
@@ -62,7 +62,7 @@ abstract public class BattleLocation extends Location {
                 }
                 this.player.getCharacter().setHealty(this.player.getCharacter().getHealty() - (monsterDamage));
             } else {
-                System.out.println("Canavar yenildi.");
+                this.player.getCharacter().setMoney(this.player.getCharacter().getMoney() + this.monster.getMoney());
                 return this.player;
             }
         }

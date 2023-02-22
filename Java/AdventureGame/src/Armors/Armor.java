@@ -27,7 +27,7 @@ public class Armor {
 
     public String getName() {
         if (isArmor) return name;
-        return "";
+        return "Yok";
     }
 
     public void setName(String name) {
