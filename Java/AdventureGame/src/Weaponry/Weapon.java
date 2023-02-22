@@ -1,20 +1,24 @@
 package Weaponry;
 
-abstract public class Weapon {
+public class Weapon {
     int ID;
     String name;
     int damage;
     int price;
+    boolean isWeapon = false;
 
+    public Weapon(){}
     public Weapon(int ID, String name, int damage, int price) {
         this.ID = ID;
         this.name = name;
         this.damage = damage;
         this.price = price;
+        isWeapon = true;
     }
 
     public int getID() {
-        return ID;
+        if (isWeapon) return ID;
+        return 0;
     }
 
     public void setID(int ID) {
@@ -22,7 +26,8 @@ abstract public class Weapon {
     }
 
     public String getName() {
-        return name;
+        if (isWeapon) return name;
+        return "";
     }
 
     public void setName(String name) {
@@ -30,7 +35,8 @@ abstract public class Weapon {
     }
 
     public int getDamage() {
-        return damage;
+        if (isWeapon) return damage;
+        return 0;
     }
 
     public void setDamage(int damage) {
@@ -38,7 +44,8 @@ abstract public class Weapon {
     }
 
     public int getPrice() {
-        return price;
+        if (isWeapon) return price;
+        return 0;
     }
 
     public void setPrice(int price) {

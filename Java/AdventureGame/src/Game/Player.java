@@ -6,8 +6,8 @@ import  Characters.CharacterPlayer;
 
 public class Player {
     CharacterPlayer character;
-    Weapon weapon;
-    Armor armor;
+    Weapon weapon = new Weapon();
+    Armor armor = new Armor();
 
     public Player(CharacterPlayer character) {
         this.character = character;

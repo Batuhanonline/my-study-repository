@@ -1,20 +1,24 @@
 package Armors;
 
-abstract public class Armor {
+public class Armor {
     int ID;
     String name;
     int damagePrevention;
     int price;
+    boolean isArmor = false;
 
+    public Armor(){}
     public Armor(int ID, String name, int damagePrevention, int price) {
         this.ID = ID;
         this.name = name;
         this.damagePrevention = damagePrevention;
         this.price = price;
+        this.isArmor = true;
     }
 
     public int getID() {
-        return ID;
+        if (isArmor) return ID;
+        return 0;
     }
 
     public void setID(int ID) {
@@ -22,7 +26,8 @@ abstract public class Armor {
     }
 
     public String getName() {
-        return name;
+        if (isArmor) return name;
+        return "";
     }
 
     public void setName(String name) {
@@ -30,7 +35,8 @@ abstract public class Armor {
     }
 
     public int getDamagePrevention() {
-        return damagePrevention;
+        if (isArmor) return damagePrevention;
+        return 0;
     }
 
     public void setDamagePrevention(int damagePrevention) {
@@ -38,7 +44,8 @@ abstract public class Armor {
     }
 
     public int getPrice() {
-        return price;
+        if (isArmor) return price;
+        return 0;
     }
 
     public void setPrice(int price) {
