@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AdventureGame/AdventureGame.iml" filepath="$PROJECT_DIR$/AdventureGame/AdventureGame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GenericList/GenericList.iml" filepath="$PROJECT_DIR$/GenericList/GenericList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/InheritanceExample/InheritanceExample.iml" filepath="$PROJECT_DIR$/InheritanceExample/InheritanceExample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Java-102.iml" filepath="$PROJECT_DIR$/.idea/Java-102.iml" />
+    </modules>
+  </component>
+</project>
